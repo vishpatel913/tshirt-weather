@@ -1,0 +1,26 @@
+<ion-view title="TShirt Weather">
+  <ion-content class="has-header">
+    <!-- Display current location's weather data-->
+    <h3>Welcome to {{city}}</h3>
+    <h4>Current Weather:</h4>
+    <p>
+      <weather-icon icon="current.icon" id="current-icon"></weather-icon> {{current.currently.summary}}</p>
+    <p><strong>Temperature: </strong>{{current.currently.temperature}}°C</p>
+    <p><strong>Apparent Temperature: </strong>{{current.currently.apparentTemperature}}°C</p>
+    <p><strong>Cloud Cover: </strong>{{current.currently.cloudCover *100}}%</p>
+    <p><strong>Precipitation Probability: </strong>{{current.precipProbability}}</p>
+    <p><strong>Precipitation Intensity: </strong>{{current.currently.precipIntensity}} inches per hour</p>
+    <p><strong>Precipitation Type: </strong>{{current.currently.precipType}}</p>
+    <p><strong>Wind Speed: </strong>{{current.currently.windSpeed}}mph</p>
+    <h4>Hourly Temperature:</h4>
+
+    <p>{{current.hourly.data[1].temperature}}°C,
+      {{current.hourly.data[2].temperature}}°C,
+      {{current.hourly.data[3].temperature}}°C,
+      {{current.hourly.data[4].temperature}}°C,
+      {{current.hourly.data[5].temperature}}°C, </p>
+    <p>Current Lat &amp Long: {{geoLat}}° N, {{geoLong}}° W</p>
+
+
+  </ion-content>
+</ion-view>

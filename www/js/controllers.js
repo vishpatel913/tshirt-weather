@@ -9,12 +9,13 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
             maximumAge: 60000
         };
 
-        $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
-            var lat = position.coords.latitude;
-            var long = position.coords.longitude;
-            $scope.geoLat = lat;
-            $scope.geoLong = long;
-        });
+        $cordovaGeolocation
+            .getCurrentPosition(posOptions)
+
+            .then(function(position) {
+                $scope.geoLat = position.coords.latitude;
+                $scope.geoLong = position.coords.longitude;
+            });
 
         //read default settings into scope
         console.log('inside weather');

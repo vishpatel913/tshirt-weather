@@ -1,7 +1,7 @@
 <ion-view title="TShirt Weather">
   <ion-content class="has-header">
     <!-- Display current location's weather data-->
-    <h3>Welcome to {{city}}</h3>
+    <h3>Weather in {{city}}</h3>
     <h4>Current Weather:</h4>
     <p>
       <weather-icon icon="current.icon" id="current-icon"></weather-icon> {{current.currently.summary}}</p>
@@ -19,7 +19,7 @@
       {{current.hourly.data[3].temperature}}°C,
       {{current.hourly.data[4].temperature}}°C,
       {{current.hourly.data[5].temperature}}°C, </p>
-    <p>Current Lat &amp Long: {{geoLat}}° N, {{geoLong}}° W</p>
+    <p>Current Lat &amp Long: {{latitude}}° N, {{longitude}}° W</p>
 
 
   </ion-content>

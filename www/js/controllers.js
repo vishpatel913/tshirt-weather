@@ -18,6 +18,23 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
                         alert('Unable to get current conditions');
                         console.error(error);
                     });
+                //google geocoder works out the location from latlng
+                // var geocoder = new google.maps.Geocoder();
+                // var latlng = new google.maps.LatLng($scope.latitude, $scope.longitude);
+                // var request = {
+                //     latLng: latlng
+                // };
+                // geocoder.geocode(request, function(data, status) {
+                //     if (status == google.maps.GeocoderStatus.OK) {
+                //         if (data[0] != null) {
+                //             $scope.city = data[0].address_components[4].long_name;
+                //             console.log(data[0]);
+                //         } else {
+                //             alert("No address available");
+                //         }
+                //     }
+                // })
+
             });
         $scope.city = DataStore.city;
 

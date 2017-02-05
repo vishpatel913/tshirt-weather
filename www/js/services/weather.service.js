@@ -27,7 +27,7 @@
         .factory('DataStore', function() {
             //create datastore with default values
             var DataStore = {
-                city: 'Camden Town',
+                city: 'London',
                 latitude: 51.5390,
                 longitude: 0.1426,
             };

@@ -21,38 +21,17 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
             });
         $scope.city = DataStore.city;
 
-        $scope.calculateAverageTemp = function() {
+        $scope.isTshirtWeather = function() {
             if ($scope.current == null) {
                 setTimeout(function() {
-                    $scope.calculateAverageTemp();
+                    $scope.isTshirtWeather();
                 }, 500); // Try to submit form after timeout
             } else {
-                // var average = HourlyCalculator.getAverage($scope.current, 'temperature', 5);
-                var average = HourlyCalculator.calculateAverage($scope.current, 'temperature', 5);
+                var temp = HourlyCalculator.getAverage($scope.current, 'temperature', 5);
+                var cloud = HourlyCalculator.getMax($scope.current, 'cloudCover', 5);
+                var boolean = temp > 18 ? true : false;
             }
-            return average;
-        };
-
-        $scope.calculateMaxClouds = function() {
-            if ($scope.current == null) {
-                setTimeout(function() {
-                    $scope.calculateMaxClouds();
-                }, 500); // Try to submit form after timeout
-            } else {
-                var max = HourlyCalculator.getMax($scope.current, 'cloudCover', 5);
-            }
-            return max;
-        };
-
-        $scope.calculateMinClouds = function() {
-            if ($scope.current == null) {
-                setTimeout(function() {
-                    $scope.calculateMinClouds();
-                }, 500); // Try to submit form after timeout
-            } else {
-                var min = HourlyCalculator.getMin($scope.current, 'cloudCover', 5);
-            }
-            return min;
-        };
+            return boolean
+        }
 
     });

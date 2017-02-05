@@ -9,8 +9,7 @@ angular.module('tshirt-weather', [
   'ionic',
   'tshirt-weather.controllers',
   'WeatherForcast',
-  'LocationService',
-  'CalculationService'
+  'LocationService'
 ])
 
 .run(function($ionicPlatform) {

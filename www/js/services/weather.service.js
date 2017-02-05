@@ -24,7 +24,7 @@
 
     angular.module('WeatherForcast', ['ngResource'])
 
-        .factory('DataStore', function($cordovaGeolocation) {
+        .factory('DataStore', function() {
             //create datastore with default values
             var DataStore = {
                 city: 'Camden Town',

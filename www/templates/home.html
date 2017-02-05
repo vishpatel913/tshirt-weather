@@ -8,7 +8,7 @@
     <p><strong>Temperature: </strong>{{current.currently.temperature}}°C</p>
     <p><strong>Apparent Temperature: </strong>{{current.currently.apparentTemperature}}°C</p>
     <p><strong>Cloud Cover: </strong>{{current.currently.cloudCover *100}}%</p>
-    <p><strong>Precipitation Probability: </strong>{{current.precipProbability}}</p>
+    <p><strong>Precipitation Probability: </strong>{{current.currently.precipProbability *100}}%</p>
     <p><strong>Precipitation Intensity: </strong>{{current.currently.precipIntensity}} inches per hour</p>
     <p><strong>Precipitation Type: </strong>{{current.currently.precipType}}</p>
     <p><strong>Wind Speed: </strong>{{current.currently.windSpeed}}mph</p>
@@ -20,7 +20,9 @@
       {{current.hourly.data[4].temperature}}°C,
       {{current.hourly.data[5].temperature}}°C, </p>
     <p>Current Lat &amp Long: {{latitude}}° N, {{longitude}}° W</p>
-
+      <p><strong>Average Temperature: </strong> {{calculateAverage('temperature', 5)}}°C</p>
+      <p><strong>Maximum Cloud Cover: </strong>{{calculateMax('cloudCover', 5) *100}}%</p>
+      <p><strong>Minimum Cloud Cover: </strong>{{calculateMin('cloudCover', 5) *100}}%</p>
 
   </ion-content>
 </ion-view>

@@ -14,7 +14,6 @@
             });
 
             return {
-                //getAtLocation: function(lat, lng) {
                 getCurrentWeather: function(lat, lng) {
                     return $http.jsonp(url + lat + ',' + lng + '?callback=JSON_CALLBACK&units=si');
                 }

@@ -3,6 +3,7 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
     .constant('eb049bc3aa34712e2762d3ba63e9c93d', 'eb049bc3aa34712e2762d3ba63e9c93d')
     .controller('WeatherCtrl', function($scope, $state, Weather, DataStore, GeoLocation, HourlyCalculator) {
 
+        $scope.startTime = (new Date()).getTime();
         GeoLocation
             .then(function(position) {
                 $scope.latitude = position.coords.latitude;
@@ -12,7 +13,8 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
                     .then(function(resp) {
                         $scope.current = resp.data;
                         console.log('GOT CURRENT', $scope.current);
-                        // return true
+                        console.log(((new Date()).getTime() - $scope.startTime)/1000);
+                        return true
                         //debugger;
                     }, function(error) {
                         alert('Unable to get current conditions');
@@ -34,6 +36,7 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
                 //         }
                 //     }
                 // })
+
 
             });
         $scope.city = DataStore.city;

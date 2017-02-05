@@ -27,6 +27,7 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
                     $scope.calculateAverageTemp();
                 }, 500); // Try to submit form after timeout
             } else {
+                // var average = HourlyCalculator.getAverage($scope.current, 'temperature', 5);
                 var average = HourlyCalculator.calculateAverage($scope.current, 'temperature', 5);
             }
             return average;
@@ -38,7 +39,7 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
                     $scope.calculateMaxClouds();
                 }, 500); // Try to submit form after timeout
             } else {
-                var max = HourlyCalculator.calculateMax($scope.current, 'cloudCover', 5);
+                var max = HourlyCalculator.getMax($scope.current, 'cloudCover', 5);
             }
             return max;
         };
@@ -49,7 +50,7 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
                     $scope.calculateMinClouds();
                 }, 500); // Try to submit form after timeout
             } else {
-                var min = HourlyCalculator.calculateMin($scope.current, 'cloudCover', 5);
+                var min = HourlyCalculator.getMin($scope.current, 'cloudCover', 5);
             }
             return min;
         };

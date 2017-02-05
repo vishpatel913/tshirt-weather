@@ -2,6 +2,7 @@
   <ion-content class="has-header">
     <!-- Display current location's weather data-->
     <h3>Weather in {{city}}</h3>
+    <h4>{{ latitude | number : 4 }}° N, {{ longitude | number : 4 }}° W</h4>
     <h4>Current Weather:</h4>
     <p>
       <weather-icon icon="current.icon" id="current-icon"></weather-icon> {{current.currently.summary}}</p>
@@ -19,10 +20,9 @@
       {{current.hourly.data[3].temperature}}°C,
       {{current.hourly.data[4].temperature}}°C,
       {{current.hourly.data[5].temperature}}°C, </p>
-    <p>Current Lat &amp Long: {{latitude}}° N, {{longitude}}° W</p>
-      <p><strong>Average Temperature: </strong> {{calculateAverage('temperature', 5)}}°C</p>
-      <p><strong>Maximum Cloud Cover: </strong>{{calculateMax('cloudCover', 5) *100}}%</p>
-      <p><strong>Minimum Cloud Cover: </strong>{{calculateMin('cloudCover', 5) *100}}%</p>
+      <p><strong>Average Temperature: </strong> {{calculateAverageTemp()}}°C</p>
+      <p><strong>Maximum Cloud Cover: </strong>{{calculateMaxClouds() *100}}%</p>
+      <p><strong>Minimum Cloud Cover: </strong>{{calculateMinClouds() *100}}%</p>
 
   </ion-content>
 </ion-view>

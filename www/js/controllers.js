@@ -1,7 +1,7 @@
 angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
 
     .constant('eb049bc3aa34712e2762d3ba63e9c93d', 'eb049bc3aa34712e2762d3ba63e9c93d')
-    .controller('WeatherCtrl', function($scope, $state, Weather, DataStore, GeoLocation) {
+    .controller('WeatherCtrl', function($scope, $state, Weather, DataStore, GeoLocation, HourlyCalculator) {
 
         GeoLocation
             .then(function(position) {
@@ -21,68 +21,37 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
             });
         $scope.city = DataStore.city;
 
-        $scope.calculateAverage = function(attr, hours) {
-
-            var total = 0;
-            var average = 0;
+        $scope.calculateAverageTemp = function() {
             if ($scope.current == null) {
                 setTimeout(function() {
-                    $scope.calculateAverage();
+                    $scope.calculateAverageTemp();
                 }, 500); // Try to submit form after timeout
             } else {
-                for (var i = 1; i < hours + 1; i++) {
-                    var hourData = $scope.current.hourly.data[i];
-                    var hourAttr = hourData[attr];
-                    total += hourAttr;
-                }
+                var average = HourlyCalculator.calculateAverage($scope.current, 'temperature', 5);
             }
-            average = Math.round(total / hours * 100) / 100;
-
             return average;
         };
 
-        $scope.calculateMax = function(attr, hours) {
-
-            var total = 0;
-            var highest = -Infinity;
+        $scope.calculateMaxClouds = function() {
             if ($scope.current == null) {
                 setTimeout(function() {
-                    $scope.calculateMax();
+                    $scope.calculateMaxClouds();
                 }, 500); // Try to submit form after timeout
             } else {
-                for (var i = 1; i < hours + 1; i++) {
-                    var hourData = $scope.current.hourly.data[i];
-                    var hourAttr = hourData[attr];
-                    if (hourAttr >= highest) {
-                        highest = hourAttr;
-                    }
-
-                }
+                var max = HourlyCalculator.calculateMax($scope.current, 'cloudCover', 5);
             }
-
-            return highest;
+            return max;
         };
 
-        $scope.calculateMin = function(attr, hours) {
-
-            var total = 0;
-            var highest = Infinity;
+        $scope.calculateMinClouds = function() {
             if ($scope.current == null) {
                 setTimeout(function() {
-                    $scope.calculateMin();
+                    $scope.calculateMinClouds();
                 }, 500); // Try to submit form after timeout
             } else {
-                for (var i = 1; i < hours + 1; i++) {
-                    var hourData = $scope.current.hourly.data[i];
-                    var hourAttr = hourData[attr];
-                    if (hourAttr <= highest) {
-                        highest = hourAttr;
-                    }
-
-                }
+                var min = HourlyCalculator.calculateMin($scope.current, 'cloudCover', 5);
             }
-
-            return highest;
+            return min;
         };
 
     });

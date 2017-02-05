@@ -1,35 +1,41 @@
-//not included
-
-// function getWeather(GeoLocation, Weather) {
-//     var current;
-//     GeoLocation
-//         .then(function(position) {
-//             var latitude = position.coords.latitude;
-//             var longitude = position.coords.longitude;
-//
-//             Weather.getCurrentWeather(latitude, longitude)
-//                 .then(function(resp) {
-//                     current = resp.data;
-//                     console.log('GOT CURRENT', current);
-//                     //debugger;
-//                 }, function(error) {
-//                     alert('Unable to get current conditions');
-//                     console.error(error);
-//                 });
-//         });
-//
-//
-//     return current;
-// }
-
 angular.module('CalculatorService', ['ngResource'])
 
-    .factory('TemperatureCalculator', function(GeoLocation, Weather) {
-
-        console.log(getWeather(GeoLocation, Weather));
-        var avrgTemp = 4;
-        // currentWeather.hourly.data[1].temperature;
-        // currentWeather.currently.temperature;
-
-        return avrgTemp;
+    .factory('HourlyCalculator', function() {
+        return {
+            calculateAverage: function(current, attr, hours) {
+                var total = 0;
+                var average = 0;
+                for (var i = 1; i < hours + 1; i++) {
+                    var hourData = current.hourly.data[i];
+                    var hourAttr = hourData[attr];
+                    total += hourAttr;
+                }
+                average = Math.round(total / hours * 100) / 100;
+                return average;
+            },
+            calculateMax: function(current, attr, hours) {
+                var total = 0;
+                var max = -Infinity;
+                for (var i = 1; i < hours + 1; i++) {
+                    var hourData = current.hourly.data[i];
+                    var hourAttr = hourData[attr];
+                    if (hourAttr >= max) {
+                        max = hourAttr;
+                    }
+                }
+                return max;
+            },
+            calculateMin: function(current, attr, hours) {
+                var total = 0;
+                var min = Infinity;
+                for (var i = 1; i < hours + 1; i++) {
+                    var hourData = current.hourly.data[i];
+                    var hourAttr = hourData[attr];
+                    if (hourAttr <= min) {
+                        min = hourAttr;
+                    }
+                }
+                return min;
+            }
+        }
     })

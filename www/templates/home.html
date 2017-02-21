@@ -1,7 +1,9 @@
 <ion-view title="TShirt Weather">
     <ion-content class="has-header">
+        <ion-refresher pulling-text="Pull To Refresh Weather" on-refresh="refreshWeather()">
+        </ion-refresher>
         <!-- Display current location's weather data-->
-        <h3>Weather in {{city}}</h3>
+        <h2>Weather in {{city}}</h2>
         <!-- <h4>{{ latitude | number : 4 }}° N, {{ longitude | number : 4 }}° W</h4> -->
         <!-- <h4>Current Weather:</h4> -->
         <!-- <p>

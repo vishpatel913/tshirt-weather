@@ -12,12 +12,23 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 
+ion-content {
+}
+
+h2 {
+    text-align: center;
+    color: $primary-dark;
+    font-family: $font-family-base;
+}
 
 .temp, .temp-title {
     text-align: center;
+    color: $primary-dark;
+    font-family: $font-family-base;
 }
 .temp {
     font-size: 40px;
     margin-top: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+
 }

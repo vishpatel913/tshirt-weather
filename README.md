@@ -1,2 +1,2 @@
 # tshirt-weather
-Project Apocalype
+Project Apocalypse

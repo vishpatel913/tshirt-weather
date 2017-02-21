@@ -1,24 +1,106 @@
 <ion-view title="TShirt Weather">
-  <ion-content class="has-header">
-    <!-- Display current location's weather data-->
-    <h3>Weather in {{city}}</h3>
-    <h4>{{ latitude | number : 4 }}° N, {{ longitude | number : 4 }}° W</h4>
-    <h4>Current Weather:</h4>
-    <h4 ng-show=isTshirtWeather()>T-Shirt Weather!</h4>
-    <h4 ng-show=!isTshirtWeather()>It's so not T-Shirt Weather</h4>
-    <p>
-      <weather-icon icon="current.icon" id="current-icon"></weather-icon> {{current.currently.summary}}</p>
-    <p><strong>Temperature: </strong>{{current.currently.temperature}}°C</p>
-    <p><strong>Apparent Temperature: </strong>{{current.currently.apparentTemperature}}°C</p>
-    <p><strong>Cloud Cover: </strong>{{current.currently.cloudCover *100}}%</p>
-    
-    <h4>Hourly Temperature:</h4>
-    <p>{{current.hourly.data[1].temperature}}°C,
-      {{current.hourly.data[2].temperature}}°C,
-      {{current.hourly.data[3].temperature}}°C,
-      {{current.hourly.data[4].temperature}}°C,
-      {{current.hourly.data[5].temperature}}°C, </p>
+    <ion-content class="has-header">
+        <!-- Display current location's weather data-->
+        <h3>Weather in {{city}}</h3>
+        <!-- <h4>{{ latitude | number : 4 }}° N, {{ longitude | number : 4 }}° W</h4> -->
+        <!-- <h4>Current Weather:</h4> -->
+        <!-- <p>
+            <weather-icon icon="current.icon" id="current-icon"></weather-icon> {{current.currently.summary}}
+        </p> -->
+        <!-- <h4 ng-show=isTshirtWeather()>It's T-Shirt Weather!</h4>
+        <p >{{torsoOption()}}</p> -->
+        <!-- <p><strong>Temperature: </strong>{{current.currently.temperature}}°C</p> -->
+        <!-- <p><strong>Apparent Temperature: </strong>{{current.currently.apparentTemperature}}°C</p> -->
+        <!-- <p><strong>Cloud Cover: </strong>{{current.currently.cloudCover *100}}%</p>
+        <p><strong>Precipitation: </strong></p>
+        <p>{{current.currently.precipProbability *100}}% chance,
+          {{current.currently.precipIntensity}} inches per hour,
+          {{current.currently.precipType}}</p> -->
+        <!-- <p><strong>Wind Speed: </strong>{{current.currently.windSpeed}}mph</p> -->
+        <!-- <h4>Hourly Temperature:</h4>
+        <p>{{current.hourly.data[1].temperature}}°C, {{current.hourly.data[2].temperature}}°C, {{current.hourly.data[3].temperature}}°C, {{current.hourly.data[4].temperature}}°C, {{current.hourly.data[5].temperature}}°C </p> -->
+        <div class="container">
+            <div class="row">
+                <div class="col-50">
+                    <div class="temp">{{current.currently.temperature}}°C</div>
+                </div>
+                <div class="col-50">
+                    <div class="temp">{{temperatureTest('temperature')}}°C</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <div class="temp-title">Current Temperature</div>
+                </div>
+                <div class="col-50">
+                    <div class="temp-title">Average Temperature</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <div class="temp">{{current.currently.apparentTemperature}}°C</div>
+                </div>
+                <div class="col-50">
+                    <div class="temp">{{temperatureTest('apparentTemperature')}}°C</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <div class="temp-title">Current Apparent Temperature</div>
+                </div>
+                <div class="col-50">
+                    <div class="temp-title">Average Apparent Temperature</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <div class="temp">{{current.currently.cloudCover * 100}}%</div>
+                </div>
+                <div class="col-50">
+                    <div class="temp">{{temperatureTest('cloudCover') * 100}}%</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <div class="temp-title">Current Cloud Cover</div>
+                </div>
+                <div class="col-50">
+                    <div class="temp-title">Average Cloud Cover</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <div class="temp">{{current.currently.precipProbability * 100}}%</div>
+                </div>
+                <div class="col-50">
+                    <div class="temp">{{temperatureTest('precipProbability') * 100}}%</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <div class="temp-title">Current Rain Probability</div>
+                </div>
+                <div class="col-50">
+                    <div class="temp-title">Max Rain Probability</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <div class="temp">{{current.currently.windSpeed}}mph</div>
+                </div>
+                <div class="col-50">
+                    <div class="temp">{{current.currently.humidity * 100}}%</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <div class="temp-title">Current Wind Speed</div>
+                </div>
+                <div class="col-50">
+                    <div class="temp-title">Current Humidity</div>
+                </div>
+            </div>
+        </div>
 
-
-  </ion-content>
+    </ion-content>
 </ion-view>

@@ -2,7 +2,7 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
 
     .constant('eb049bc3aa34712e2762d3ba63e9c93d', 'eb049bc3aa34712e2762d3ba63e9c93d')
     .controller('WeatherCtrl', function($scope, $state, Weather, DataStore, GeoLocation, HourlyCalculator) {
-
+        var averageNum = 5;
         $scope.refreshWeather = function() {
             $scope.startTime = (new Date()).getTime();
             GeoLocation
@@ -61,9 +61,9 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
         $scope.temperatureTest = function(type) {
             if ($scope.waitForWeather()) {
                 if (type == 'precipProbability') {
-                    var averageTemp = HourlyCalculator.getMax($scope.current, type, 5);
+                    var averageTemp = HourlyCalculator.getMax($scope.current, type, averageNum);
                 } else {
-                    var averageTemp = HourlyCalculator.getAverage($scope.current, type, 5);
+                    var averageTemp = HourlyCalculator.getAverage($scope.current, type, averageNum);
                 }
             }
             return averageTemp;
@@ -71,9 +71,9 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
 
         $scope.isTshirtWeather = function() {
             if ($scope.waitForWeather()) {
-                var temp = HourlyCalculator.getAverage($scope.current, 'temperature', 5);
-                var cloud = HourlyCalculator.getMax($scope.current, 'cloudCover', 5);
-                var rainprop = HourlyCalculator.getAverage($scope.current, 'precipProbability', 5);
+                var temp = HourlyCalculator.getAverage($scope.current, 'temperature', averageNum);
+                var cloud = HourlyCalculator.getMax($scope.current, 'cloudCover', averageNum);
+                var rainprop = HourlyCalculator.getAverage($scope.current, 'precipProbability', averageNum);
                 var boolean = temp > 24 ? true : false;
                 // if (temp > 18 && cloud == 0) {
                 //     boolean = true;
@@ -87,34 +87,5 @@ angular.module('tshirt-weather.controllers', ['ionic', 'ngCordova'])
             return boolean
         }
 
-        $scope.torsoOption = function() {
-            var torso = "tshirt"
-            if ($scope.waitForWeather()) {
-                var temp = HourlyCalculator.getAverage($scope.current, 'temperature', 5);
-                var apaTemp = HourlyCalculator.getAverage($scope.current, 'apparentTemperature', 5);
-                var cloud = HourlyCalculator.getMax($scope.current, 'cloudCover', 5);
-                var rainprop = HourlyCalculator.getAverage($scope.current, 'precipProbability', 5);
-                var raini = HourlyCalculator.getMax($scope.current, 'precipIntensity', 5);
-                if (temp >= (6 * cloud) + 18 && rainprop < 0.2) {
-                    torso = "tshirt"
-                } else if (temp >= (6 * cloud) + 15 && apaTemp > 20) {
-                    torso = "longsleeve"
-                } else if (temp >= (6 * cloud) + 15 && apaTemp < 20) {
-                    torso = "light-jacket"
-                } else if (temp >= (6 * cloud) + 10 && apaTemp > 12) {
-                    torso = "jacket"
-                } else if (temp >= (6 * cloud) + 10 && apaTemp < 12) {
-                    torso = "hoodie"
-                }
-                // else if (rainprop > 0.2) {
-                //     torso = "coat"
-                // }
-                else {
-                    torso = "layers"
-                }
-            }
-            return torso
-
-        }
 
     });

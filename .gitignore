@@ -38,6 +38,7 @@ bower_components
 .node_repl_history
 
 www/css
+www/lib
 coverage
 platforms
 plugins

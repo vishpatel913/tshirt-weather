@@ -13,12 +13,24 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 
 ion-content {
+
+}
+
+ion-refresher {
+  color: $dark;
 }
 
 h2 {
+    margin: 0;
     text-align: center;
-    color: $primary-dark;
+    color: $dark;
     font-family: $font-family-base;
+}
+
+.header-box {
+    background-color: $primary;
+    padding: 10px 0;
+
 }
 
 .temp, .temp-title {

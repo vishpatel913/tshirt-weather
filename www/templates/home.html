@@ -1,9 +1,11 @@
 <ion-view title="TShirt Weather">
-    <ion-content class="has-header">
-        <ion-refresher pulling-text="Pull To Refresh Weather" on-refresh="refreshWeather()">
+    <ion-content>
+        <ion-refresher pulling-text="Pull For Current Weather" on-refresh="refreshWeather()">
         </ion-refresher>
         <!-- Display current location's weather data-->
-        <h2>Weather in {{city}}</h2>
+        <div class="header-box">
+            <h2>Weather in {{city}}</h2>
+        </div>
         <!-- <h4>{{ latitude | number : 4 }}° N, {{ longitude | number : 4 }}° W</h4> -->
         <!-- <h4>Current Weather:</h4> -->
         <!-- <p>
@@ -75,7 +77,8 @@
                     <div class="temp">{{current.currently.precipProbability * 100}}%</div>
                 </div>
                 <div class="col-50">
-                    <div class="temp">{{temperatureTest('precipProbability') * 100}}%</div>
+                    <div class="temp" ng-if="current.currently.precipProbability < 0.25">{{temperatureTest('precipProbability') * 100}}%</div>
+                    <div class="temp" ng-if="current.currently.precipProbability >= 0.25">{{current.currently.precipIntensity}}</div>
                 </div>
             </div>
             <div class="row">
@@ -83,7 +86,8 @@
                     <div class="temp-title">Current Rain Probability</div>
                 </div>
                 <div class="col-50">
-                    <div class="temp-title">Max Rain Probability</div>
+                    <div class="temp-title" ng-if="current.currently.precipProbability < 0.25">Max Rain Probability</div>
+                    <div class="temp-title" ng-if="current.currently.precipProbability >= 0.25">Current Rain Intensity (iph)</div>
                 </div>
             </div>
             <div class="row">

@@ -9800,10 +9800,18 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+ion-refresher {
+  color: #007969; }
+
 h2 {
+  margin: 0;
   text-align: center;
-  color: #00BFA5;
+  color: #007969;
   font-family: "Rubik", "Roboto" !important; }
+
+.header-box {
+  background-color: #1DE9B6;
+  padding: 10px 0; }
 
 .temp, .temp-title {
   text-align: center;

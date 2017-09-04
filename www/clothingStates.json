@@ -1,0 +1,19 @@
+{
+    "torso": [{
+        "state": "t-shirt",
+        "temperature": 18,
+        "cloud": 0
+    }, {
+        "state": "t-shirt",
+        "temperature": 20,
+        "cloud": 0.20
+    }, {
+        "state": "t-shirt",
+        "temperature": 23,
+        "cloud": 0.50
+    }, {
+        "state": "t-shirt",
+        "temperature": 24,
+        "cloud": 1
+    }]
+}
